@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+import createBox from './tools/createBox'
 
 function App() {
   const scene = new THREE.Scene()
@@ -43,6 +44,7 @@ function App() {
 
   // scene.add(line2)
 
+  // Свет
   scene.add(cube)
 
   camera.position.z = 4
@@ -61,13 +63,8 @@ function App() {
   }
   let i = 0
   const addBlock = () => {
-    const cube = new THREE.Mesh(
-      new THREE.BoxGeometry(1, 1, 1),
-      new THREE.MeshBasicMaterial({ color: 'cornflowerblue' })
-    )
-    cube.position.z = i
+    createBox(scene, 'red', i)
     i++
-    scene.add(cube)
   }
 
   useEffect(() => {
