@@ -12,6 +12,12 @@ function App() {
     1000
   )
 
+  const size = 10
+  const divisions = 70
+
+  const gridHelper = new THREE.GridHelper(size, divisions)
+  scene.add(gridHelper)
+
   const renderer = new THREE.WebGLRenderer()
   renderer.setClearColor('#fff', 1)
   const controls = new OrbitControls(camera, renderer.domElement)
@@ -63,7 +69,7 @@ function App() {
   }
   let i = 0
   const addBlock = () => {
-    createBox(scene, 'red', i)
+    createBox(scene, 'rgb(100, 100, 120)', i)
     i++
   }
 
