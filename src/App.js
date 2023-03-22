@@ -104,11 +104,6 @@ function App() {
 
     renderer.render(scene, camera)
   }
-  // let i = 0
-  // const addBlock = () => {
-  //   createBox(scene, 'rgb(100, 100, 120)', i)
-  //   i++
-  // }
 
   cubeGeo = new THREE.BoxGeometry(1, 1, 1)
   cubeMaterial = new THREE.MeshBasicMaterial({
@@ -143,7 +138,7 @@ function App() {
       } else {
         const voxel = new THREE.Mesh(cubeGeo, cubeMaterial)
         voxel.position.copy(intersect.point).add(intersect.face.normal)
-        voxel.position.divideScalar(1).floor().multiplyScalar(1).addScalar(1)
+        voxel.position.divideScalar(1).floor().multiplyScalar(1).addScalar(0.5)
         scene.add(voxel)
 
         objects.push(voxel)
@@ -154,8 +149,7 @@ function App() {
   }
 
   createBox(scene, 'rgb(20, 100, 120)', 0.5)
-  // window.addEventListener('pointermove', onPointerMove)
-  window.addEventListener('pointerdown', onPointerDown)
+  window.addEventListener('dblclick', onPointerDown)
   window.requestAnimationFrame(render)
 
   useEffect(() => {
