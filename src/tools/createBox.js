@@ -1,29 +1,24 @@
 import * as THREE from 'three'
 
-function createBox(scene, color, x) {
+function createBox(scene, color, x, boxSize) {
   const material = new THREE.MeshBasicMaterial({ color, opacity: 0.6, transparent: true })
-  const geometry = new THREE.BoxGeometry(1, 1, 1, 1, 1, 1)
+  const geometry = new THREE.BoxGeometry(boxSize, boxSize, boxSize, 1, 1, 1)
   const cube = new THREE.Mesh(geometry, material)
-  scene.add(cube)
 
   // Линия
 
-  const edges2 = new THREE.EdgesGeometry(new THREE.BoxGeometry(1, 1, 1))
+  const edges2 = new THREE.EdgesGeometry(new THREE.BoxGeometry(boxSize, boxSize, boxSize))
   const line2 = new THREE.LineSegments(
     edges2,
     new THREE.LineBasicMaterial({
       color: 'black',
     })
   )
-  line2.position.x = 0.5
-  line2.position.z = 0.5
-  line2.position.y = x
+  cube.position.set(2, 2, 2)
+  line2.position.set(2, 2, 2)
 
   scene.add(line2)
-
-  cube.position.x = 0.5
-  cube.position.z = 0.5
-  cube.position.y = x
+  scene.add(cube)
   return cube
 }
 

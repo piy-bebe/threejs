@@ -1,0 +1,13 @@
+.informer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+
+  border: 1px solid black;
+  width: 200px;
+  height: 80px;
+
+  font-family: Consolas;
+  font-size: 18px;
+}
